@@ -1,4 +1,4 @@
-# datastructures_and_algos
+# DSA
 
 ## Project setup
 ```
