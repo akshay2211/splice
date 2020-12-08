@@ -32,5 +32,6 @@ const router = new VueRouter({
   base: publicPath,
   routes
 })
+console.log(publicPath +"            publicPath "); 
 
 export default router
