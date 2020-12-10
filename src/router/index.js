@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Sorting from '../views/Sorting.vue'
-import { publicPath } from '../vue.config'
 
 Vue.use(VueRouter)
 
@@ -29,7 +28,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: publicPath,
+  base: process.env.BASE_URL,
   routes
 })
 console.log(publicPath +"            publicPath "); 
