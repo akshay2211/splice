@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Sorting from '../views/Sorting.vue'
 
-Vue.use(VueRouter)
+//Vue.use(VueRouter)
 
 const routes = [
   {
