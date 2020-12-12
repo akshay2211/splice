@@ -1,6 +1,6 @@
 <template>
   <div class="Sorting pure-g">
-    <ul class="static pure-u-1-3">
+    <ul class="static pure-u-1-5">
       <li
         :class="selectionIndex === i ? 'active' : ''"
         v-for="(m, i) in menu"
@@ -9,9 +9,12 @@
        <a @click="selectSorting(i)">{{ m }}</a>
       </li>
     </ul>
-    <div class="content pure-u-2-3">
+    <div class="content pure-u-4-5">
       <h1>{{menu[selectionIndex]}}</h1>
-      <input v-text="inputString" class="col-12" />
+      <div class="pure-g pure-form">
+         <input type="text" id="stacked-array" placeholder="array to sort" class="pure-u-1" />
+      </div>
+   
     </div>
   </div>
 </template>
@@ -36,8 +39,8 @@ export default {
   },
   methods: {
       selectSorting(index){
-          console.log("onclick " + index);
-      this.selectionIndex = index
+          console.log("onclick " + index+"     "+this.inputString);
+          this.selectionIndex = index
     }
   },
   name: "HelloHome",
@@ -52,7 +55,7 @@ h1
   font-weight 400
 ul
   list-style-type: none
-  margin-left -40px
+  margin-left -48px
 li
   text-align left
   cursor pointer

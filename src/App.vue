@@ -3,6 +3,11 @@
     <home v-if="typeState === 0"/>
     <sort v-else-if="typeState === 1" />
     <home v-else msg="hie" />
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Sorting from '../views/Sorting.vue'
 
-//Vue.use(VueRouter)
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -27,7 +27,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })
