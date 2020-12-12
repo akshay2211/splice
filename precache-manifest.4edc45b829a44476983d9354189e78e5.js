@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1666a45687f913eee42b",
-    "url": "/dsa_algo/css/app.10f4fb1c.css"
+    "revision": "9d16c07b4859c73cf878",
+    "url": "/dsa_algo/css/app.b96bf678.css"
   },
   {
     "revision": "4be3ba8ea4058e8d340dc6290b8b3d7a",
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dsa_algo/img/logo.82b9c7a5.png"
   },
   {
-    "revision": "ebc413eca0d5d19c3e763f2f203d771b",
+    "revision": "bc2831f7cd0dc710961c5dbe8c5094c1",
     "url": "/dsa_algo/index.html"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dsa_algo/js/about.f7cd7411.js"
   },
   {
-    "revision": "1666a45687f913eee42b",
-    "url": "/dsa_algo/js/app.209a8e8d.js"
+    "revision": "9d16c07b4859c73cf878",
+    "url": "/dsa_algo/js/app.438f3dde.js"
   },
   {
     "revision": "e91b5b142a61043b7784",
