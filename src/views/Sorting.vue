@@ -1,9 +1,12 @@
 <template>
-  <div class="about">
-    <h1>This is an about page {{type}}</h1>
+  <div class="sorting">
+        <Sorting1 msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 <script>
+
+import Sorting1 from '@/components/Sort.vue'
+
 
 export default {
   data(){
@@ -14,6 +17,9 @@ export default {
     '$route'(to,from){
       this.type = this.$route.params.type
     }
+  },name: 'sort',
+  components: {
+    Sorting1
   }
 }
 </script>

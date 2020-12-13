@@ -12,6 +12,10 @@ const routes = [
     component: Home
   },
   {
+    path: '/sorting/',
+    redirect:'/sorting/bubblesort'
+  },
+  {
     path: '/sorting/:type',
     name: 'Sorting',
     component: Sorting
