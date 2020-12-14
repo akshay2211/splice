@@ -40,13 +40,8 @@
          <h2 class="content-subhead">live example</h2>
          <input v-model="inputString" type="text" class="pure-u-1"/>
         <div class="pure-g" v-for="(j,indx) in 10" :key="indx">
-            
             <pre :class="i==indx?'active-num':''" v-for="(num,i) in inputString.split(',').map(addSpace)"  :key="i">{{num}}</pre>
         </div>
-
-       
-
-    
       </div>
     </div>
   </div>
