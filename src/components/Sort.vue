@@ -39,8 +39,8 @@
         </p>
          <h2 class="content-subhead">live example</h2>
          <input v-model="inputString" type="text" class="pure-u-1"/>
-        <div class="pure-g" v-for="(j,indx) in 10" :key="indx">
-            <pre :class="i==indx?'active-num':''" v-for="(num,i) in inputString.split(',').map(addSpace)"  :key="i">{{num}}</pre>
+        <div class="pure-g" v-for="(j,indx) in arrayList" :key="indx">
+            <pre :class="i==indx?'active-num':''" v-for="(num,i) in j"  :key="i">{{num}}</pre>
         </div>
       </div>
     </div>
@@ -53,6 +53,8 @@ export default {
     return {
       menuVisibility: false,
       inputString: "3,456,75,45,23,7,678,4,32,9,2,457",
+      array :[],
+      arrayList:[],
       selectionIndex: 0,
       menu: [
         //"Overview","Algorithms","Data Structures",
@@ -78,6 +80,27 @@ export default {
          return num;
 		//return  num.length===1?" "+num:num;
 	}	
+  },watch:{
+      inputString(value){
+          this.arrayList = [];
+          this.array = value.split(",").map(Number);
+           console.log("first hie value "+this.array);
+          for (let i = 0; i < this.array.length; i++) {
+		for (let j = 0; j < this.array.length; j++) {
+			if (this.array[j] > this.array[j + 1]) {
+				let temp = this.array[j];
+				this.array[j] = this.array[j + 1];
+                this.array[j + 1] = temp;
+                console.log(this.array[j]+"  "+this.array[j + 1]);
+                const newArray = this.array;
+                this.arrayList.push(newArray.map(String));
+			}
+        }
+      }
+       for (let i = 0; i < this.arrayList.length; i++) {
+           console.log("first hie valuenew  "+i+" ->>>   "+this.arrayList[i]);
+       }    
+	}
   },
   name: "HelloWorld",
   props: {
