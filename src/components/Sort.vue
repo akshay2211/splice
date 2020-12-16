@@ -40,10 +40,9 @@
          <h2 class="content-subhead">live example</h2>
          <input v-model="inputString" type="text" class="pure-u-1"/>
         <div class="pure-g" v-for="(j,indx) in arrayList" :key="indx">
-            <div :class="'pure-u-1-'+j.length" v-for="(num,i) in j"
+            <div class="paddingRight" :style="'width:'+(100/j.length)+'%!important'" v-for="(num,i) in j"
               :key="i">
-            <pre :class="(i==num.firstSelection || i==num.secondSelection)
-            ?'active-num':''">{{num.num}}</pre></div>
+            <pre :class="{'active-num':(i==num.firstSelection || i==num.secondSelection)}">{{num.num}}</pre></div>
         </div>
       </div>
     </div>
@@ -91,35 +90,32 @@ export default {
 
           for (let i = 0; i < this.array.length; i++) {
 		for (let j = 0; j < this.array.length; j++) {
-			if (this.array[j] > this.array[j + 1]) {
+             var that = this;
+      
+            if (that.array[j] > that.array[j + 1]) {
+                
                   let newArray = [];
-                  for(let x = 0 ; x<this.array.length ; x++){
+                  for(let x = 0 ; x<that.array.length ; x++){
                     let select1 = (x===j)?j:10000;
                      let select2 = (x===j+1)?j+1:10000;
-                     let myObj = {num:this.array[x],firstSelection:select1,secondSelection:select2}
+                     let myObj = {num:that.array[x],firstSelection:select1,secondSelection:select2}
                       console.log("obj - >  "+myObj.num+" "+myObj.firstSelection+"  "+myObj.secondSelection);
 newArray.push(myObj);
                 }
-				let temp = this.array[j];
-				this.array[j] = this.array[j + 1];
-                this.array[j + 1] = temp;
-                console.log(this.array[j]+"  "+this.array[j + 1]);
+				let temp = that.array[j];
+				that.array[j] = that.array[j + 1];
+                that.array[j + 1] = temp;
+                console.log(that.array[j]+"  "+that.array[j + 1]+"    ---------   ");
 
               
 
-                this.arrayList.push(newArray);
+                that.arrayList.push(newArray);
+                  
 			}
+ 
+			
         }
       }
-       let newArray = [];
-          for(let x = 0 ; x<this.array.length ; x++){
-                    let select1 = (x===j)?j:10000;
-                     let select2 = (x===j+1)?j+1:10000;
-                     let myObj = {num:this.array[x],firstSelection:select1,secondSelection:select2}
-                      console.log("obj - >  "+myObj.num+" "+myObj.firstSelection+"  "+myObj.secondSelection);
-newArray.push(myObj);
-                }
-                this.arrayList.push(newArray);
        for (let i = 0; i < this.arrayList.length; i++) {
            console.log("first hie valuenew  "+i+" ->>>   "+this.arrayList[i]);
        }    
@@ -133,4 +129,9 @@ newArray.push(myObj);
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+
+.paddingRight
+  padding-right 10px;
+  
+</style>
