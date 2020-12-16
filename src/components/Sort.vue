@@ -40,7 +40,10 @@
          <h2 class="content-subhead">live example</h2>
          <input v-model="inputString" type="text" class="pure-u-1"/>
         <div class="pure-g" v-for="(j,indx) in arrayList" :key="indx">
-            <pre :class="i==indx?'active-num':''" v-for="(num,i) in j"  :key="i">{{num}}</pre>
+            <div :class="'pure-u-1-'+j.length" v-for="(num,i) in j"
+              :key="i">
+            <pre :class="(i==num.firstSelection || i==num.secondSelection)
+            ?'active-num':''">{{num.num}}</pre></div>
         </div>
       </div>
     </div>
@@ -85,18 +88,38 @@ export default {
           this.arrayList = [];
           this.array = value.split(",").map(Number);
            console.log("first hie value "+this.array);
+
           for (let i = 0; i < this.array.length; i++) {
 		for (let j = 0; j < this.array.length; j++) {
 			if (this.array[j] > this.array[j + 1]) {
+                  let newArray = [];
+                  for(let x = 0 ; x<this.array.length ; x++){
+                    let select1 = (x===j)?j:10000;
+                     let select2 = (x===j+1)?j+1:10000;
+                     let myObj = {num:this.array[x],firstSelection:select1,secondSelection:select2}
+                      console.log("obj - >  "+myObj.num+" "+myObj.firstSelection+"  "+myObj.secondSelection);
+newArray.push(myObj);
+                }
 				let temp = this.array[j];
 				this.array[j] = this.array[j + 1];
                 this.array[j + 1] = temp;
                 console.log(this.array[j]+"  "+this.array[j + 1]);
-                const newArray = this.array;
-                this.arrayList.push(newArray.map(String));
+
+              
+
+                this.arrayList.push(newArray);
 			}
         }
       }
+       let newArray = [];
+          for(let x = 0 ; x<this.array.length ; x++){
+                    let select1 = (x===j)?j:10000;
+                     let select2 = (x===j+1)?j+1:10000;
+                     let myObj = {num:this.array[x],firstSelection:select1,secondSelection:select2}
+                      console.log("obj - >  "+myObj.num+" "+myObj.firstSelection+"  "+myObj.secondSelection);
+newArray.push(myObj);
+                }
+                this.arrayList.push(newArray);
        for (let i = 0; i < this.arrayList.length; i++) {
            console.log("first hie valuenew  "+i+" ->>>   "+this.arrayList[i]);
        }    
