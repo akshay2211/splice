@@ -38,7 +38,6 @@ export default {
       inputString: "3,456,75,45,23,7,678,4,32,9,2,457",
       array: [],
       arrayList: [],
-      selectionIndex: 0,
       menu: [
         //"Overview","Algorithms","Data Structures",
         "Bubble Sort",
@@ -60,13 +59,6 @@ export default {
     console.log("mounted" + this.$el);
   },
   methods: {
-    selectSorting(index) {
-      console.log("onclick " + index + "     " + this.inputString);
-      this.selectionIndex = index;
-    },
-    menuToggle() {
-      this.menuVisibility = !this.menuVisibility;
-    },
     addSpace: function(num) {
       console.log("addSpace " + num);
       return num;
@@ -132,7 +124,7 @@ export default {
       //this.updateArrayList(value);
     },
   },
-  name: "HelloWorld",
+  name: "bubblesort",
   props: {
     msg: String,
   }, components: {

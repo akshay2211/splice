@@ -10,7 +10,7 @@
             Explore various Sorting Algorithms on splice
         </p>
         <p>
-           <router-link to="/Sorting" class="pure-button pure-button-primary">Get Started</router-link> </p>
+           <router-link to="/sorting" class="pure-button pure-button-primary">Get Started</router-link> </p>
     </div>
 </div>
 

@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Sorting from '../views/Sorting.vue'
 
+import BubbleSort from '../components/BubbleSort.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -12,13 +14,27 @@ const routes = [
     component: Home
   },
   {
-    path: '/sorting/',
-    redirect:'/sorting/bubblesort'
-  },
-  {
-    path: '/sorting/:type',
-    name: 'Sorting',
-    component: Sorting
+    path: '/sorting',
+    name: 'sorting',
+    component: Sorting,
+    children:[
+      {
+        path: 'insertionsort',
+        name: 'insertionsort',
+        component: BubbleSort
+      },
+      {
+        path: 'bubblesort',
+        name: 'bubblesort',
+        component: BubbleSort
+      },
+      {
+        path: '*', redirect: 'bubblesort'
+      },
+      {
+        path: '/', redirect: 'bubblesort'
+      }
+    ]
   },
   {
     path: '/about',

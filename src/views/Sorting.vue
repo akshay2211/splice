@@ -8,15 +8,13 @@
     >
       <img src="/img/icons/menu.svg" />
     </a>
-    <SideSortingMenu showMenu="menuVisibility"/>
+    <SideSortingMenu :showMenu="menuVisibility"/>
     <router-view></router-view>
-    <SortingMainPage msg="Welcome to Your Vue.js App"/>
   </div>
   </div>
 </template>
 <script>
 
-import SortingMainPage from '@/components/BubbleSort.vue';
 import SideSortingMenu from '@/components/sorting/SideSortingMenu.vue';
 
 
@@ -34,7 +32,7 @@ export default {
     }
   },name: 'sort',
   components: {
-    SortingMainPage,SideSortingMenu
+    SideSortingMenu
   }
 }
 </script>
