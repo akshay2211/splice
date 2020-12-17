@@ -1,33 +1,4 @@
 <template>
-  <div id="layout" :class="menuVisibility ? 'active' : ''">
-    <!-- Menu toggle -->
-    <a
-      @click="menuToggle()"
-      :class="menuVisibility ? 'menu-link active' : 'menu-link'"
-    >
-      <img src="/img/icons/menu.svg" />
-    </a>
-
-    <div id="menu" :class="menuVisibility ? 'active' : ''">
-      <div class="pure-menu">
-        <router-link class="pure-menu-heading" to="/">⇦ Back</router-link>
-
-        <ul class="pure-menu-list">
-          <li
-            :class="
-              selectionIndex === i
-                ? 'pure-menu-item pure-menu-selected'
-                : 'pure-menu-item'
-            "
-            v-for="(m, i) in menu"
-            :key="m"
-          >
-            <a class="pure-menu-link" @click="selectSorting(i)">{{ m }}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
     <div id="main">
       <div class="header">
         <h1>{{ menu[selectionIndex] }}</h1>
@@ -65,7 +36,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -93,6 +64,7 @@ export default {
     console.log("created" + this.$el);
   },
   mounted() {
+    
     this.updateArrayList(this.inputString);
     console.log("mounted" + this.$el);
   },
@@ -165,7 +137,8 @@ export default {
   },
   watch: {
     inputString(value) {
-      this.updateArrayList(value);
+
+      //this.updateArrayList(value);
     },
   },
   name: "HelloWorld",
