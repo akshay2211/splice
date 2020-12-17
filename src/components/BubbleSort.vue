@@ -3,7 +3,9 @@
       <SortingHeader :title="title" :desc="desc" :def="def" />
         <div class="content">
         <h2 class="content-subhead">live example</h2>
+        <div class="pure-g">
         <input v-model="inputString" type="text" class="pure-u-1" />
+        </div>
         <div class="pure-g" v-for="(j, indx) in arrayList" :key="indx">
           <div
             class="paddingRight"
@@ -134,18 +136,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="stylus">
 
-.paddingRight
-  padding-right 10px;
-pre
-  padding-left 0px;
-  padding-right 0px;
-  padding-top 0.5em;
-  padding-bottom 0.5em;
-  text-align center;
-  overflow hidden
-.last-row
-  background: #efe none repeat scroll 0% 0%;
-  border: 1px solid #cfc;
-</style>

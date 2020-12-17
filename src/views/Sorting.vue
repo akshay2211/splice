@@ -36,4 +36,21 @@ export default {
   }
 }
 </script>
-    Navigation
+<style lang="stylus">
+
+.paddingRight
+  padding-right 10px;
+pre
+  padding-left 0px;
+  padding-right 0px;
+  padding-top 0.5em;
+  padding-bottom 0.5em;
+  text-align center;
+  overflow hidden
+.last-row
+  background: #efe none repeat scroll 0% 0%;
+  border: 1px solid #cfc;
+input
+  padding 0.7em;
+  letter-spacing 4px!important;
+</style>
