@@ -1,20 +1,7 @@
 <template>
     <div id="main">
-      <div class="header">
-        <h1>{{ menu[selectionIndex] }}</h1>
-        <h2>Bubble sort has a worst-case and average complexity of О(n2).</h2>
-      </div>
-
-      <div class="content">
-        <h2 class="content-subhead">Definition</h2>
-        <p>
-          Bubble sort, sometimes referred to as sinking sort, is a simple
-          sorting algorithm that repeatedly steps through the list, compares
-          adjacent elements and swaps them if they are in the wrong order. The
-          pass through the list is repeated until the list is sorted. The
-          algorithm, which is a comparison sort, is named for the way smaller or
-          larger elements "bubble" to the top of the list.
-        </p>
+      <SortingHeader :title="title" :desc="desc" :def="def" />
+        <div class="content">
         <h2 class="content-subhead">live example</h2>
         <input v-model="inputString" type="text" class="pure-u-1" />
         <div class="pure-g" v-for="(j, indx) in arrayList" :key="indx">
@@ -40,9 +27,13 @@
 </template>
 
 <script>
+import SortingHeader from '@/components/sorting/SortingHeader.vue';
 export default {
   data() {
     return {
+      title : "Bubble Sort",
+       desc : "Bubble sort has a worst-case and average complexity of О(n2).",
+      def : "Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The ass through the list is repeated until the list is sorted. The algorithm, which is a comparison sort, is named for the way smaller or larger elements \"bubble\" to the top of the list.",
       menuVisibility: false,
       inputString: "3,456,75,45,23,7,678,4,32,9,2,457",
       array: [],
@@ -144,7 +135,9 @@ export default {
   name: "HelloWorld",
   props: {
     msg: String,
-  },
+  }, components: {
+    SortingHeader
+  }
 };
 </script>
 
