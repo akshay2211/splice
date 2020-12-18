@@ -14,11 +14,7 @@
             :key="i"
           >
             <pre
-              :class="{
-                'active-num':
-                  i == num.firstSelection || i == num.secondSelection,
-                'last-row': indx == arrayList.length - 1,
-              }"
+              :class="num.type"
               >{{ num.num }}</pre
             >
           </div>
@@ -40,74 +36,64 @@ export default {
       inputString: "3,456,75,45,23,7,678,4,32,9,2,457",
       array: [],
       arrayList: [],
-      menu: [
-        //"Overview","Algorithms","Data Structures",
-        "Bubble Sort",
-        "Insertion Sort",
-        "Selection Sort",
-        "Merge Sort",
-        "Shell Sort",
-        "Quick Sort",
-        //,"Recursion"
-      ],
+      ActiveNum: "active-num",
+      SortingNum: "last-row",
+      SortedNum: "sorted-num",
+      Style1: "style1",
+      Style2: "style2",
+      Style3: "style3",
     };
   },
-  created() {
-    console.log("created" + this.$el);
-  },
-  mounted() {
-    
+  async mounted() {
+    /*let ar = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n"];
+    for (let x in ar){
+      console.log(x);
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    }*/
     this.updateArrayList(this.inputString);
     console.log("mounted" + this.$el);
   },
-  methods: {
+   methods: {
     addSpace: function(num) {
       console.log("addSpace " + num);
       return num;
       //return  num.length===1?" "+num:num;
     },
-    updateArrayList(value) {
+    async updateArrayList(value) {
       this.arrayList = [];
       value = value.replace(/,\s*$/, "");
-      this.array = value.split(",").map(Number);
-      console.log("first hie value " + this.array);
+      let array = value.split(",").map((item, index) => ({num : parseInt(item), type : ''}));
+      this.arrayList.push(array)
+      let counter = 0;
+  let swap = true;
 
-      for (let i = 0; i < this.array.length; i++) {
-        for (let j = 0; j < this.array.length; j++) {
-          var that = this;
+  while (counter < array.length && swap) {
+    swap = false;
+    for (let i = 0; i < array.length - 1 - counter; i++) {
+      // change color of two indeces that are being compared
+      array[i].type = this.Style2;
+      array[i+1].type = this.Style2;
 
-          if (that.array[j] > that.array[j + 1]) {
-            let newArray = [];
-            for (let x = 0; x < that.array.length; x++) {
-              let select1 = x === j ? j : 10000;
-              let select2 = x === j + 1 ? j + 1 : 10000;
-              let myObj = {
-                num: that.array[x],
-                firstSelection: select1,
-                secondSelection: select2,
-              };
-              console.log(
-                "obj - >  " +
-                  myObj.num +
-                  " " +
-                  myObj.firstSelection +
-                  "  " +
-                  myObj.secondSelection
-              );
-              newArray.push(myObj);
-            }
-            let temp = that.array[j];
-            that.array[j] = that.array[j + 1];
-            that.array[j + 1] = temp;
-            console.log(
-              that.array[j] + "  " + that.array[j + 1] + "    ---------   "
-            );
-            that.arrayList.push(newArray);
-          }
-        }
+       await new Promise((resolve) => setTimeout(resolve, 1000));
+      if(array[i].num>array[i+1].num){
+        swap = true;
+         let temp = array[i];
+            array[i] = array[i + 1];
+            array[i + 1] = temp;
+            let copyVar = array;
+            this.arrayList.push(copyVar)
       }
+      let { num: newA } = array[i];
+      let { num: newB } = array[i + 1];
+      array[i]= { num: newA, type: this.Style1 };
+      array[i+1]= { num: newB, type: this.Style3 };
+    }
+    counter++;
+    }
+     
 
-      console.log("last hie value " + this.array);
+     /* console.log("last hie value " + this.array);
       let newArray1 = [];
       for (let x = 0; x < this.array.length; x++) {
         let myObj = {
@@ -117,7 +103,7 @@ export default {
         };
         newArray1.push(myObj);
       }
-      this.arrayList.push(newArray1);
+      this.arrayList.push(newArray1);*/
     },
   },
   watch: {
@@ -126,7 +112,7 @@ export default {
       this.updateArrayList(value);
     },
   },
-  name: "bubblesort",
+  name: "insertionsort",
   props: {
     msg: String,
   }, components: {
@@ -134,6 +120,14 @@ export default {
   }
 };
 </script>
+<style scoped lang="stylus">
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+.style1
+  background yellow !important;
+.style2
+  background green !important;
+.style3
+  background blue !important;
+
+</style>
 

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Sorting from '../views/Sorting.vue'
 
 import BubbleSort from '../components/BubbleSort.vue'
+import InsertionSort from '../components/InsertionSort.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +22,7 @@ const routes = [
       {
         path: 'insertionsort',
         name: 'insertionsort',
-        component: BubbleSort
+        component: InsertionSort
       },
       {
         path: 'bubblesort',
