@@ -49,7 +49,6 @@ export default {
     for (let x in ar){
       console.log(x);
       await new Promise((resolve) => setTimeout(resolve, 3000));
-
     }*/
     this.updateArrayList(this.inputString);
     console.log("mounted" + this.$el);
@@ -72,24 +71,31 @@ export default {
     swap = false;
     for (let i = 0; i < array.length - 1 - counter; i++) {
       // change color of two indeces that are being compared
-      array[i].type = this.Style2;
-      array[i+1].type = this.Style2;
+      array[i].type = this.ActiveNum;
+      array[i+1].type = this.ActiveNum;
 
        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+     
+
       if(array[i].num>array[i+1].num){
         swap = true;
          let temp = array[i];
             array[i] = array[i + 1];
             array[i + 1] = temp;
             let copyVar = array;
+            var newArr = this.arrayList[this.arrayList.length-1].map((item, index) => ({num : ""+item.num, type : item.type}));
+            this.arrayList[this.arrayList.length-1] = newArr
             this.arrayList.push(copyVar)
       }
-      let { num: newA } = array[i];
+      array[i].type = '';
+      array[i+1].type = '';
+      /* let { num: newA } = array[i];
       let { num: newB } = array[i + 1];
       array[i]= { num: newA, type: this.Style1 };
-      array[i+1]= { num: newB, type: this.Style3 };
+      array[i+1]= { num: newB, type: this.Style3 };*/
     }
-    counter++;
+    counter+=1;
     }
      
 
