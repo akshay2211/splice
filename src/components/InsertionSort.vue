@@ -7,7 +7,7 @@
         <input v-model="inputString" type="text" class="pure-u-1" />
       </div>
       <div class="pure-g" v-for="(j, indx) in arrayList" :key="indx">
-<P> swaping digits</p>
+        <P> swaping digits</p>
         <div
           class="paddingRight"
           :style="'width:' + 100 / j.length + '%!important'"
