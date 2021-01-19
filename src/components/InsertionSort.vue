@@ -6,15 +6,19 @@
       <div class="pure-g">
         <input v-model="inputString" type="text" class="pure-u-1" />
       </div>
-      <div class="pure-g" v-for="(j, indx) in arrayList" :key="indx">
-        <P> swaping digits</p>
+      <div v-for="(j, indx) in arrayList" :key="indx">
+        <div> <span v-if="j.swaping">comparing </span>
+        <span v-else>swaped </span>
+        {{j.swap1}} with {{j.swap2}}</div>
+        <div class="pure-g">
         <div
           class="paddingRight"
-          :style="'width:' + 100 / j.length + '%!important'"
-          v-for="(num, i) in j"
+          :style="'width:' + 100 / j.myArray.length + '%!important'"
+          v-for="(num, i) in j.myArray"
           :key="i"
         >
           <pre :class="num.type">{{ num.num }}</pre>
+        </div>
         </div>
       </div>
     </div>
@@ -63,7 +67,7 @@ export default {
       let array = value
         .split(",")
         .map((item, index) => ({ num: parseInt(item), type: "" }));
-      this.arrayList.push(array);
+      this.arrayList.push({swaping : true, swap1:""+array[0].num,swap2:""+array[1].num,myArray:array});
       let counter = 0;
       let swap = true;
 
@@ -74,20 +78,20 @@ export default {
           array[i].type = this.ActiveNum;
           array[i + 1].type = this.ActiveNum;
 
-          await new Promise((resolve) => setTimeout(resolve, 1000));
+        //  await new Promise((resolve) => setTimeout(resolve, 1000));
 
           if (array[i].num > array[i + 1].num) {
             swap = true;
             var newArr = this.arrayList[
               this.arrayList.length - 1
-            ].map((item, index) => ({ num: "" + item.num, type: item.type }));
-            this.arrayList[this.arrayList.length - 1] = newArr;
+            ].myArray.map((item, index) => ({ num: "" + item.num, type: item.type }));
+            this.arrayList[this.arrayList.length - 1] = {swaping : false, swap1:""+array[i].num,swap2:""+array[i+1].num,myArray:newArr}
             let temp = array[i];
             array[i] = array[i + 1];
             array[i + 1] = temp;
             let copyVar = array;
 
-            this.arrayList.push(copyVar);
+            this.arrayList.push({swaping : true,swap1:""+array[i].num,swap2:""+array[i+1].num,myArray:copyVar});
           }
           array[i].type = "";
           array[i + 1].type = "";
