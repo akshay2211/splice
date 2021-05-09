@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/splice/precache-manifest.c7fd3043372f727204d01c065f17807b.js"
+  "/splice/precache-manifest.1cf7116f6c773ba4646d141a8714ec30.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "datastructures_and_algos"});
